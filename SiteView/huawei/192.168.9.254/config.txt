@@ -22,7 +22,8 @@ domain system
  messenger time disable
 
  domain default enable system
-  #
+  
+#
  local-server nas-ip 127.0.0.1 key huawei
 
 local-user admin
@@ -246,7 +247,8 @@ route-policy a permit node 1
  system-guard detect-threshold 80 1 3
  system-guard detect-maxnum 10
  system-guard enable
-# mirrored-to link-group 4000 rule 1 interface Ethernet0/24
+#
+ mirrored-to link-group 4000 rule 1 interface Ethernet0/24
 #
 user-interface aux 0
 user-interface vty 0 4
