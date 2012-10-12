@@ -22,8 +22,7 @@ domain system
  messenger time disable
 
  domain default enable system
-  
-#
+  #
  local-server nas-ip 127.0.0.1 key huawei
 
 local-user admin
