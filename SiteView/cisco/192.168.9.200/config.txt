@@ -9,16 +9,6 @@ no service password-encryption
  no ip directed-broadcast
  shutdown
 !
-interface Serial0/3
- no ip address
- no ip directed-broadcast
- shutdown
-!
-interface Ethernet1/0
- ip address 192.168.9.200 255.255.255.0
- ip directed-broadcast
-!
-router ospf 7
  network 192.168.0.0 0.0.0.255 area 7
  network 192.168.9.0 0.0.0.255 area 7
 !
