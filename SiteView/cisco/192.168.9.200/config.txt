@@ -5,23 +5,7 @@ service timestamps log uptime
 no service password-encryption
 !
 
-interface Ethernet0/0
- ip address 192.168.0.200 255.255.255.0
- ip directed-broadcast
-!
-interface Serial0/0
- no ip address
- no ip directed-broadcast
- no ip mroute-cache
- shutdown
-!
-interface Serial0/1
- no ip address
- no ip directed-broadcast
- shutdown
-!
-interface Serial0/2
- no ip address
+
  no ip directed-broadcast
  shutdown
 !
