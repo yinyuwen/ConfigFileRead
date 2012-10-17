@@ -9,7 +9,19 @@ hostname SW_3560
 !
 boot-start-marker
 boot-end-marker
-
+!
+enable password siteview
+!
+!
+!
+no aaa new-model
+system mtu routing 1500
+ip routing
+no ip domain-lookup
+ip dhcp excluded-address 192.168.9.1 192.168.9.10
+ip dhcp excluded-address 192.168.9.22
+ip dhcp excluded-address 192.168.9.30
+ip dhcp excluded-address 192.168.9.44 192.168.9.50
 ip dhcp excluded-address 192.168.9.56
 ip dhcp excluded-address 192.168.9.64
 ip dhcp excluded-address 192.168.9.144
