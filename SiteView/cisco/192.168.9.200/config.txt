@@ -4,18 +4,7 @@ service timestamps debug uptime
 service timestamps log uptime
 no service password-encryption
 !
-hostname test_2610
-!
-enable secret 5 $1$kixV$kG0n9uMXYKxJikkODW0c30
-!
-username rou password 0 rou
-ip subnet-zero
-no ip domain-lookup
-!
-!
-!
-!
-!
+
 interface Ethernet0/0
  ip address 192.168.0.200 255.255.255.0
  ip directed-broadcast
