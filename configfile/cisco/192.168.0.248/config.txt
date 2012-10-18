@@ -3,7 +3,8 @@ version 12.2
 no service pad
 service timestamps debug datetime msec
 service timestamps log datetime msec
-no service password-encryptionsssssssssssssssssssssssssss
+no service password-encryption
+!
 hostname SW_3560
 !
 boot-start-marker
