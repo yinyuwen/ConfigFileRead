@@ -45,8 +45,7 @@ local-user adminad
 local-user adminadmin
  password simple adminadmin
   
-  
-local-user jonee
+  local-user jonee
  password simple admin
  service-type ftp ftp-directory flash:/
 #
@@ -66,10 +65,11 @@ local-user jonee
 #
  am enable
 #
- vrrp ping-enable#
-  dhcp server ip-pool 3ren
+ vrrp ping-enable
+#
+dhcp server ip-pool 3ren
    network 192.168.4.0 mask 255.255.255.0
- gateway-list 192.168.4.1
+   gateway-list 192.168.4.1
  dns-list 202.103.96.112
 #
 dhcp server ip-pool dm
@@ -91,9 +91,9 @@ acl number 2001
  rule 0 permit
 #
 acl name aa advanced match-order auto
-   rule 0 permit ip source 192.168.4.2 0
+ rule 0 permit ip source 192.168.4.2 0
   acl name mirror advanced
- rule 0 permit ip
+   rule 0 permit ip
 #
 acl number 4000
  rule 1 permit ip ingress any egress any
@@ -115,9 +115,9 @@ vlan 7
 vlan 8
 #
 vlan 9
-  #
-  vlan 10
 #
+  vlan 10
+  #
 interface Vlan-interface1
  shutdown
  ip address 10.0.0.1 255.255.255.0

@@ -1,0 +1,307 @@
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW_3560
+!
+boot-start-marker
+boot-end-marker
+!
+enable password siteview
+!
+!
+!
+no aaa new-model
+system mtu routing 1500
+ip routing
+no ip domain-lookup
+ip dhcp excluded-address 192.168.9.1 192.168.9.10
+ip dhcp excluded-address 192.168.9.22
+ip dhcp excluded-address 192.168.9.30
+ip dhcp excluded-address 192.168.9.44 192.168.9.50
+ip dhcp excluded-address 192.168.9.56
+ip dhcp excluded-address 192.168.9.64
+ip dhcp excluded-address 192.168.9.144
+ip dhcp excluded-address 192.168.9.240 192.168.9.254
+ip dhcp excluded-address 192.168.9.63
+!
+ip dhcp pool siteview
+   network 192.168.9.0 255.255.255.0
+   default-router 192.168.9.1 
+   dns-server 192.168.0.1 
+   lease 365
+!
+!
+!
+!
+energywise domain siteview security shared-secret 0 siteview
+energywise importance 6
+energywise name caining1
+energywise role caining1
+energywise keywords caining1
+energywise management security shared-secret 0 siteview
+!
+crypto pki trustpoint TP-self-signed-1499128320
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1499128320
+ revocation-check none
+ rsakeypair TP-self-signed-1499128320
+!
+!
+crypto pki certificate chain TP-self-signed-1499128320
+ certificate self-signed 01
+  30820240 308201A9 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31343939 31323833 3230301E 170D3933 30333031 30303031 
+  30355A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 34393931 
+  32383332 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100C48A 8433AA72 2DFBDAA1 9EB39DC3 71CC010C 2E415A32 6B66327F 19DB0526 
+  0988B91A 9124B5E8 0D8A38D5 97D405B7 36047D28 B22E1B31 859F8A77 392A8714 
+  0899814C 8E807080 B3AF9355 67581273 EC939EC3 FAC6FE2B 18B3C6C2 1A794075 
+  BCCAC5B2 B1131748 631C03C6 00E7C79D 1542BA37 91F8033C 455D1E94 F341C11C 
+  E2410203 010001A3 68306630 0F060355 1D130101 FF040530 030101FF 30130603 
+  551D1104 0C300A82 0853575F 33353630 2E301F06 03551D23 04183016 8014C19B 
+  5AD57DB1 5CFBFFB0 E8EE2D29 638C65D3 32CE301D 0603551D 0E041604 14C19B5A 
+  D57DB15C FBFFB0E8 EE2D2963 8C65D332 CE300D06 092A8648 86F70D01 01040500 
+  03818100 B7C156E7 67AB284E CE39EF41 9A609FF4 75E9DCCE 888D269D 1B41D28E 
+  2F74966F AF4BEE9C 72FC0D97 1E4CA5BF 5AECA1E4 00B102F7 B5B384C5 76677FDD 
+  B752FBF1 31E650F5 B2B0558B 30657EFE DD42468E BAE76772 12D6E0C5 AC3BBD24 
+  2B7D93B0 997DD2C4 D3E9F7B8 3D806885 11C26444 5F9F9D5E 0D2CB611 A04044D5 254BE2CB
+  quit
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+interface Loopback33333
+ ip address 1.1.1.1 255.255.255.0
+!
+interface FastEthernet0/1
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/2
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/3
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/4
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/5
+ switchport access vlan 9
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/6
+ switchport access vlan 9
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/7
+ switchport access vlan 9
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/8
+ switchport access vlan 9
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/9
+ switchport access vlan 9
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/10
+ switchport access vlan 9
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/11
+ switchport access vlan 9
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/12
+ switchport access vlan 9
+ switchport mode access
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/13
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/14
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/15
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/16
+ description f0/16_alias
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/17
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/18
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/19
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/20
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/21
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/22
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/23
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface FastEthernet0/24
+ energywise importance 6
+ energywise role caining1
+ energywise keywords caining1
+ energywise name caining1
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 192.168.0.248 255.255.255.0
+!
+interface Vlan8
+ no ip address
+!
+interface Vlan9
+ ip address 192.168.9.1 255.255.255.0
+!
+router rip
+ version 2
+ network 1.0.0.0
+ no auto-summary
+!
+ip default-gateway 192.168.0.1
+ip classless
+ip route 0.0.0.0 0.0.0.0 192.168.0.1
+ip route 192.168.7.0 255.255.255.0 192.168.9.143
+ip http server
+ip http secure-server
+!
+!
+ip sla enable reaction-alerts
+access-list 1 deny   192.168.9.229
+access-list 1 deny   192.168.9.193
+access-list 1 permit any
+arp 192.168.9.112 0013.2049.ceca ARPA
+arp 192.168.9.116 0013.2049.9c6e ARPA
+arp 192.168.9.65 524e.eaea.63ea ARPA
+arp 192.168.0.5 3333.3333.3333 ARPA
+arp 192.168.9.198 0013.207d.cb02 ARPA
+!
+snmp-server community dragon RO
+snmp-server community dragonflow RW
+!
+!
+line con 0
+line vty 0 4
+ exec-timeout 0 0
+ password rootroot
+ login
+line vty 5 15
+ exec-timeout 0 0
+ password rootroot
+ login
+!
+!
+monitor session 1 source interface Fa0/1 - 23
+monitor session 1 destination interface Fa0/24
+end
