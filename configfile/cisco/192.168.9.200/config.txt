@@ -1,0 +1,74 @@
+!
+version 12.0
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname test_2610
+!
+enable secret 5 $1$kixV$kG0n9uMXYKxJikkODW0c30
+!
+username rou password 0 rou
+ip subnet-zero
+no ip domain-lookup
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ ip address 192.168.0.200 255.255.255.0
+ ip directed-broadcast
+!
+interface Serial0/0
+ no ip address
+ no ip directed-broadcast
+ no ip mroute-cache
+ shutdown
+!
+interface Serial0/1
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface Serial0/2
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface Serial0/3
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface Ethernet1/0
+ ip address 192.168.9.200 255.255.255.0
+ ip directed-broadcast
+!
+router ospf 7
+ network 192.168.0.0 0.0.0.255 area 7
+ network 192.168.9.0 0.0.0.255 area 7
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 192.168.9.1
+!
+snmp-server community siteview RO
+snmp-server contact abc@dragonflow.com
+snmp-server host 192.168.0.97 traps siteview
+snmp-server host 192.168.9.50 traps siteview
+snmp-server host 192.168.0.192 traps siteview
+!
+line con 0
+ exec-timeout 0 0
+ password siteview
+ logging synchronous
+ login
+ transport input none
+line aux 0
+line vty 0 4
+ exec-timeout 0 0
+ password siteview
+ login
+!
+no scheduler allocate
+end

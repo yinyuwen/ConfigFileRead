@@ -66,8 +66,7 @@ local-user jonee
 #
  am enable
 #
- vrrp ping-enable
-#
+ vrrp ping-enable#
   dhcp server ip-pool 3ren
    network 192.168.4.0 mask 255.255.255.0
  gateway-list 192.168.4.1
